@@ -1,0 +1,26 @@
+@use '../../styles/variables.scss' as *;
+
+.timeSlot {
+    background-color: $color-light;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: $color-main;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.selected {
+        color: $color-light;
+        background-color: $color-main;
+    }
+
+    &.disabled {
+        color: $color-border;
+
+        &:hover {
+            cursor: default;
+        }
+    }
+}

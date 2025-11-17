@@ -1,0 +1,27 @@
+@use '../../styles/variables.scss' as *;
+
+.calendarWrapper {
+    background-color: $color-light;
+    border: 1px solid $color-main;
+    border-radius: 12px;
+    padding: 16px;
+    max-width: 360px;
+    overflow: hidden;
+
+    /* Hide default RD styles */
+    .calendar {
+        --rdp-cell-size: 42px;
+        --rdp-accent-color: $color-main;
+        --rdp-background-color: transparent;
+        --rdp-outline: none;
+        --rdp-outline-selected: none;
+
+        width: 100% !important;
+        max-width: 100% !important;
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+    }  
+}
