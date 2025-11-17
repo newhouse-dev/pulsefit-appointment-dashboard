@@ -62,3 +62,10 @@ link in the README.
 - Functionality bears more weight for this demo than pixel-perfect design implementation.
 - Trainer and schedule data can be configured in a project JSON file for this demo.
 - Real-time availability would be determined by the backend and is out of scope.
+
+## Known Bugs
+- Hide calendar by default on mobile, toggle with button
+- Fix styling for trainer card
+- Hamburger menu on mobile
+- Calendar styling
+- Availability does not change when date is changed

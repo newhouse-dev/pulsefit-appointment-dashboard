@@ -1,0 +1,65 @@
+import { CheckmarkCircleFilled } from '@fluentui/react-icons';
+import styles from './SubmitConfirmation.module.scss';
+import type { ITimeSlot, ITrainer } from '../../data/MockTypes';
+
+type ISubmitConfirmationProps = {
+    onClose: () => void;
+    text: string;
+    slot: ITimeSlot;
+    selectedDate: Date;
+    trainer: ITrainer;
+}
+
+// TODO: Move this to a reusable module
+const formatDate = (date: Date) => {
+    return new Intl.DateTimeFormat("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+    }).format(date);
+}
+
+
+const SubmitConfirmation = ({ text, trainer, slot, selectedDate, onClose }: ISubmitConfirmationProps) => {
+    
+    return (
+        <div className={styles.submitConfirmation}>
+            <CheckmarkCircleFilled className={styles.checkmark} />
+            <h1>{text}</h1>
+            {/* The below component is very similar to TrainerCard, but different enough to warrant rendering separately. 
+                As an area for improvement I may ask design if this component is intentionally styled different or if it can be consolidated.
+            */}
+            <div className={styles.trainerConfirmCard}>
+                <div className={styles.trainerInfo}>
+                    <div className={styles.photo}>
+                        <img src={trainer.image} alt={`Photo of ${trainer.name}`} />
+                    </div>
+                    <div className={styles.name}>{trainer.name}</div>
+                    <div className={styles.title}>{trainer.title}</div>
+                    <div className={styles.details}>
+                        <div className={styles.detailRow}>
+                            <span className={styles.detailLabel}>Date:</span>
+                            <span className={styles.detailValue}>{formatDate(selectedDate)}</span>
+                        </div>
+
+                        <div className={styles.detailRow}>
+                            <span className={styles.detailLabel}>Time:</span>
+                            <span className={styles.detailValue}>{slot.time} (PT)</span> {/* Timezones assumed out of scope for this demo */}
+                        </div>
+
+                        <div className={styles.detailRow}>
+                            <span className={styles.detailLabel}>Duration:</span>
+                            <span className={styles.detailValue}>50 min Zoom Visit</span> {/* Assumed out of scope for this demo */}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.navigation}>
+                <div className={styles.backToDashboard} onClick={() => onClose()}>Back to Dashboard</div>
+                <div className={styles.addToCalendar}>Add to Calendar</div> {/* Does nothing - assumed out of scope for this demo */}
+            </div>
+        </div>
+    );
+}
+
+export default SubmitConfirmation;

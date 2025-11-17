@@ -15,7 +15,7 @@ const Header = ({ logo, logoUrl, user }: IHeaderProps) => (
         <div className={styles.userDropdown}>
             <PersonFilled className={styles.userIcon} />
             <div className={styles.userDisplayName}>{user}</div>
-            <CaretDownFilled className={styles.dropdownIcon} />
+            <CaretDownFilled className={styles.dropdownIcon} /> {/* Assumed out of scope */}
         </div>
     </div>
 );

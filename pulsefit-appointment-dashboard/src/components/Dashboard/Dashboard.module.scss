@@ -4,29 +4,61 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+    min-height: 100vh;
+
+    .contentRow {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        
+        .calendarSection {
+            margin-bottom: 16px;
+
+            .header {
+                color: $color-main;
+            }
+
+            .description {
+                color: $color-main;
+            }
+        }
+    
+        .trainerSection {
+            flex: 1;
+            overflow-y: auto;
+        }
+    }
+
 }
 
  @media (min-width: $breakpoint-lg) {
-        .dashboard {
+    .dashboard {
+        flex-direction: column;
+        gap: 48px;
+
+        .contentRow {
             flex-direction: row;
             gap: 48px;
             
             .calendarSection {
                 width: 350px;    
                 flex-shrink: 0;    
-        
-                .header {
-        
-                }
-            
-                .description {
-            
-                }
-            }
-
-            .trainerSection {
-                flex: 1;
             }
         }
         
+
+        .trainerSection {
+            flex: 1;
+            overflow-y: auto;
+        }
     }
+        
+}
+
+.footer {
+    flex-shrink: 0;
+    position: sticky;
+    width: 100%;
+    bottom: 0;
+    background-color: $color-background;
+}

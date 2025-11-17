@@ -1,0 +1,47 @@
+@use '../../styles/variables.scss' as *;
+
+.footer {
+    padding: 16px;
+    border-top: 1px solid $color-border;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @media (min-width: $breakpoint-md) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .contactUsLink {
+            a {
+                color: $color-main;
+                text-decoration: none;
+            }
+            font-weight: $font-weight-bold;
+        }
+    }
+
+    .submitBtn {
+        background-color: $color-main;
+        color: $color-white;
+        padding: 16px 12px;
+        text-align: center;
+        border-radius: 50px;
+        font-weight: $font-weight-bold;
+        
+        &:hover {
+            cursor: pointer;
+        }
+
+         @media (min-width: $breakpoint-md) {
+            border-radius: 8px;
+        }
+    }
+
+}

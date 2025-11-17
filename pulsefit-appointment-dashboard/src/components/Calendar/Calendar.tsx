@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './Calendar.module.scss';
 import { DayPicker } from 'react-day-picker';
+import "react-day-picker/dist/style.css";
 
 type ICalendarProps = {
     selectedDate: Date;
