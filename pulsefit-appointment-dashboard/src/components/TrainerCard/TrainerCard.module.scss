@@ -5,7 +5,7 @@
   background: $color-white;
   border: 1px solid $color-border;
   border-radius: 16px;
-  padding: 16px;
+  padding: 4px;
 
   display: flex;
   flex-direction: column;
@@ -15,25 +15,36 @@
     padding: 16px 20px 20px;
     margin-bottom: 20px;
     border-radius: 18px;
+    max-width: 600px;
+  }
+
+    .trainerInfo {
+        column-gap: 16px;
+        align-items: center;
+        margin-bottom: 16px;
+        display: flex;
+        flex-direction: row;
+        
+        .photo img {
+            width: 72px;
+            object-fit: cover;
+        }
+        
+        .name {
+            font-weight: $font-weight-bold;
+            color: $color-main;
+        }
+    }
+
+  .trainerAvailibility {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+
+    @media (min-width: $breakpoint-md) {
+        grid-template-columns: repeat(4, 1fr);
+    }
   }
 }
-
-.trainerInfo {
-    column-gap: 16px;
-    align-items: center;
-    margin-bottom: 16px;
-    display: flex;
-    flex-direction: row;
-    
-    .photo img {
-        width: 72px;
-        object-fit: cover;
-    }
-    
-    .name {
-        font-weight: $font-weight-bold;
-        color: $color-main;
-    }
-}
-
-

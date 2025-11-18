@@ -38,25 +38,25 @@ const SubmitConfirmation = ({ text, trainer, slot, selectedDate, onClose }: ISub
                     <div className={styles.title}>{trainer.title}</div>
                     <div className={styles.details}>
                         <div className={styles.detailRow}>
-                            <span className={styles.detailLabel}>Date:</span>
+                            <span className={styles.detailLabel}>Date: </span>
                             <span className={styles.detailValue}>{formatDate(selectedDate)}</span>
                         </div>
 
                         <div className={styles.detailRow}>
-                            <span className={styles.detailLabel}>Time:</span>
+                            <span className={styles.detailLabel}>Time: </span>
                             <span className={styles.detailValue}>{slot.time} (PT)</span> {/* Timezones assumed out of scope for this demo */}
                         </div>
 
                         <div className={styles.detailRow}>
-                            <span className={styles.detailLabel}>Duration:</span>
+                            <span className={styles.detailLabel}>Duration: </span>
                             <span className={styles.detailValue}>50 min Zoom Visit</span> {/* Assumed out of scope for this demo */}
                         </div>
                     </div>
                 </div>
             </div>
             <div className={styles.navigation}>
-                <div className={styles.backToDashboard} onClick={() => onClose()}>Back to Dashboard</div>
-                <div className={styles.addToCalendar}>Add to Calendar</div> {/* Does nothing - assumed out of scope for this demo */}
+                <div className='btn primary' onClick={() => onClose()}>Back to Dashboard</div>
+                <div className='btn secondary'>Add to Calendar</div> {/* Does nothing - assumed out of scope for this demo */}
             </div>
         </div>
     );

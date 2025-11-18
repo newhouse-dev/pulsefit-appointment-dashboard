@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { produce } from 'immer';
 
+import styles from './App.module.scss';
 import PulseFitLogo from './assets/PulseFitLogo.png';
 import Header from './components/Header'
 import Dashboard from './components/Dashboard';
@@ -71,7 +72,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className={styles.app}>
       <Header logo={PulseFitLogo} user='Kevin' logoUrl='/' />
       {error && <ErrorMessage message={error} /> }
       { submittedTrainer && submittedSlot
@@ -89,7 +90,7 @@ function App() {
           submit={submit}
         />
       }
-    </>
+    </div>
   )
 }
 
