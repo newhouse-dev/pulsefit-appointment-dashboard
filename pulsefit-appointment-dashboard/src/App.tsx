@@ -59,7 +59,8 @@ function App() {
 
     setTrainerData(prev => 
       produce(prev, draft => {
-        // Normally a mutation like this is not reflected in state, but immer produce makes this possible so it works.
+        // Normally a mutation like this is not reflected in state, but immer produce makes this possible.
+        // I went this route instead of an inline find() to increase readability.
         // https://immerjs.github.io/immer/produce/
         draft[selectedTrainerIdx].availability[selectedSlotIdx].isAvailable = false;
       })
