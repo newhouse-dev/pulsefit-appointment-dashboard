@@ -12,10 +12,11 @@ type IFooterProps = {
     contactLinkLabel: string;
     contactLinkUrl: string;
     submitBtnLabel: string;
+    isSubmitBtnDisabled: boolean;
     onSubmit: () => void;
 }
 
-const Footer = ({ contactLinkLabel, contactLinkUrl, contactText, submitBtnLabel, onSubmit }: IFooterProps) => {
+const Footer = ({ contactLinkLabel, contactLinkUrl, contactText, submitBtnLabel, isSubmitBtnDisabled, onSubmit }: IFooterProps) => {
     
     return (
         <footer className={styles.footer}>
@@ -25,9 +26,9 @@ const Footer = ({ contactLinkLabel, contactLinkUrl, contactText, submitBtnLabel,
                     <a href={contactLinkUrl}>{contactLinkLabel}</a>
                 </span>
             </section>
-            <div role="button" className='btn primary' onClick={() => onSubmit()}>
+            { !isSubmitBtnDisabled && <div role="button" className='btn primary' onClick={() => onSubmit()}>
                 {submitBtnLabel}
-            </div>
+            </div> }
         </footer>
     );
 }
