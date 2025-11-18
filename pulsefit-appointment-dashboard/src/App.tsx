@@ -6,15 +6,15 @@ import PulseFitLogo from './assets/PulseFitLogo.png';
 import Header from './components/Header'
 import Dashboard from './components/Dashboard';
 import { MockTrainers } from './data/MockTrainers';
-import type { ITimeSlot, ITrainer } from './data/MockTypes';
+import type { IBookingData, ITrainer } from './data/MockTypes';
 import ErrorMessage from './components/ErrorMessage';
 import SubmitConfirmation from './components/SubmitConfirmation';
 
 
 function App() {
   const [error, setError] = useState<string | null>(null);
-  const [submittedSlot, setSubmittedSlot] = useState<ITimeSlot | null>(null);
-  const [submittedTrainer, setSubmittedTrainer] = useState<ITrainer | null>(null);
+  const [bookedData, setBookedData] = useState<IBookingData[]>([]);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [trainerData, setTrainerData] = useState<ITrainer[]>(MockTrainers);
 
@@ -67,23 +67,27 @@ function App() {
     );
 
     // Update was successful, display the confirmation page
-    setSubmittedTrainer({ ...selectedTrainer });
-    setSubmittedSlot({ ...selectedSlot });
-    setSelectedDate(selectedDate);
+    // setSubmittedTrainer({ ...selectedTrainer });
+    // setSubmittedSlot({ ...selectedSlot });
+    setBookedData(prev => [...prev, {
+      trainer: selectedTrainer,
+      slot: selectedSlot,
+      date: selectedDate
+    }]);
+    setShowConfirmation(true);
+    // setSelectedDate(selectedDate);
   }
 
   return (
     <>
-      <Header logo={PulseFitLogo} user='Kevin' logoUrl='/' />
+      <Header logo={PulseFitLogo} user='Kevin' logoUrl='/' bookedData={bookedData} />
       <main className={styles.app}>
         {error && <ErrorMessage message={error} /> }
-        { submittedTrainer && submittedSlot
+        { showConfirmation
           ? <SubmitConfirmation
               text='Your visit is booked.'
-              onClose={() => { setSubmittedTrainer(null); setSubmittedSlot(null); }} 
-              slot={submittedSlot}
-              trainer={submittedTrainer}
-              selectedDate={selectedDate}
+              bookedData={bookedData[bookedData.length - 1]}
+              onClose={() => { setShowConfirmation(false); }} 
           />
           : <Dashboard 
             trainerData={trainerData} 

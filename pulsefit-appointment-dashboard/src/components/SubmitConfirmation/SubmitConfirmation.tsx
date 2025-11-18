@@ -1,13 +1,11 @@
 import { CheckmarkCircleFilled } from '@fluentui/react-icons';
 import styles from './SubmitConfirmation.module.scss';
-import type { ITimeSlot, ITrainer } from '../../data/MockTypes';
+import type { IBookingData } from '../../data/MockTypes';
 
 type ISubmitConfirmationProps = {
     onClose: () => void;
     text: string;
-    slot: ITimeSlot;
-    selectedDate: Date;
-    trainer: ITrainer;
+    bookedData: IBookingData;
 }
 
 // TODO: Move this to a reusable module
@@ -20,7 +18,7 @@ const formatDate = (date: Date) => {
 }
 
 
-const SubmitConfirmation = ({ text, trainer, slot, selectedDate, onClose }: ISubmitConfirmationProps) => {
+const SubmitConfirmation = ({ text, bookedData, onClose }: ISubmitConfirmationProps) => {
     
     return (
         <div role="status" aria-live="polite" className={styles.submitConfirmation}>
@@ -32,19 +30,19 @@ const SubmitConfirmation = ({ text, trainer, slot, selectedDate, onClose }: ISub
             <div className={styles.trainerConfirmCard}>
                 <div className={styles.trainerInfo}>
                     <div className={styles.photo}>
-                        <img src={trainer.image} alt={`Photo of ${trainer.name}`} />
+                        <img src={bookedData.trainer.image} alt={`Photo of ${bookedData.trainer.name}`} />
                     </div>
-                    <div className={styles.name}>{trainer.name}</div>
-                    <div className={styles.title}>{trainer.title}</div>
+                    <div className={styles.name}>{bookedData.trainer.name}</div>
+                    <div className={styles.title}>{bookedData.trainer.title}</div>
                     <div className={styles.details}>
                         <div className={styles.detailRow}>
                             <span className={styles.detailLabel}>Date: </span>
-                            <span className={styles.detailValue}>{formatDate(selectedDate)}</span>
+                            <span className={styles.detailValue}>{formatDate(bookedData.date)}</span>
                         </div>
 
                         <div className={styles.detailRow}>
                             <span className={styles.detailLabel}>Time: </span>
-                            <span className={styles.detailValue}>{slot.time} (PT)</span> {/* Timezones assumed out of scope for this demo */}
+                            <span className={styles.detailValue}>{bookedData.slot.time} (PT)</span> {/* Timezones assumed out of scope for this demo */}
                         </div>
 
                         <div className={styles.detailRow}>

@@ -11,3 +11,9 @@ export type ITrainer = {
     image: string;
     availability: ITimeSlot[]; 
 }
+
+export type IBookingData = {
+    trainer: ITrainer
+    slot: ITimeSlot;
+    date: Date;
+}
