@@ -72,25 +72,27 @@ function App() {
   }
 
   return (
-    <main className={styles.app}>
+    <>
       <Header logo={PulseFitLogo} user='Kevin' logoUrl='/' />
-      {error && <ErrorMessage message={error} /> }
-      { submittedTrainer && submittedSlot
-        ? <SubmitConfirmation
-            text='Your visit is booked.'
-            onClose={() => { setSubmittedTrainer(null); setSubmittedSlot(null); }} 
-            slot={submittedSlot}
-            trainer={submittedTrainer}
-            selectedDate={selectedDate}
-        />
-        : <Dashboard 
-          trainerData={trainerData} 
-          headerText='Book a visit' 
-          descriptionText='Choose a date to see available times.'
-          submit={submit}
-        />
-      }
-    </main>
+      <main className={styles.app}>
+        {error && <ErrorMessage message={error} /> }
+        { submittedTrainer && submittedSlot
+          ? <SubmitConfirmation
+              text='Your visit is booked.'
+              onClose={() => { setSubmittedTrainer(null); setSubmittedSlot(null); }} 
+              slot={submittedSlot}
+              trainer={submittedTrainer}
+              selectedDate={selectedDate}
+          />
+          : <Dashboard 
+            trainerData={trainerData} 
+            headerText='Book a visit' 
+            descriptionText='Choose a date to see available times.'
+            submit={submit}
+          />
+        }
+      </main>
+    </>
   )
 }
 
