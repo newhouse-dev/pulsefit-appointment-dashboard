@@ -48,7 +48,7 @@ const Dashboard = ({headerText, descriptionText, trainerData, submit}: IDashboar
                             className={styles.searchBox}
                             placeholder="Search for trainers" 
                             size="large"
-                            onChange={(ev, data) => setSearchText(data.value)} value={searchText} 
+                            onChange={(_ev, data) => setSearchText(data.value)} value={searchText} 
                         />
                     </section>
                     {
