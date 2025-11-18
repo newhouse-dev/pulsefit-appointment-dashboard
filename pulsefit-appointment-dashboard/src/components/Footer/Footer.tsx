@@ -18,17 +18,17 @@ type IFooterProps = {
 const Footer = ({ contactLinkLabel, contactLinkUrl, contactText, submitBtnLabel, onSubmit }: IFooterProps) => {
     
     return (
-        <div className={styles.footer}>
-            <div className={styles.contact}>
+        <footer className={styles.footer}>
+            <section className={styles.contact}>
                 <span className={styles.contactText}>{contactText}</span>
                 <span className={styles.contactUsLink}>
                     <a href={contactLinkUrl}>{contactLinkLabel}</a>
                 </span>
-            </div>
-            <div className='btn primary' onClick={() => onSubmit()}>
+            </section>
+            <div role="button" className='btn primary' onClick={() => onSubmit()}>
                 {submitBtnLabel}
             </div>
-        </div>
+        </footer>
     );
 }
 

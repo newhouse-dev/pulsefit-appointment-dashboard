@@ -8,10 +8,13 @@ type ITimeSlotProps = {
 }
 
 const TimeSlot = ({ slot, isSelected, onSelect }: ITimeSlotProps) => (
-    <div className={[
-        styles.timeSlot, 
-        isSelected ? styles.selected : '',
-        slot.isAvailable ? '' : styles.disabled].join(' ')} 
+    <div 
+        role='button' 
+        aria-pressed={isSelected} 
+        className={[
+            styles.timeSlot, 
+            isSelected ? styles.selected : '',
+            slot.isAvailable ? '' : styles.disabled].join(' ')} 
         onClick={() => slot.isAvailable && onSelect(slot.id)}
     >
         {slot.time}

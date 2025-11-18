@@ -7,7 +7,7 @@ type IErrorMessageProps = {
 const ErrorMessage = ({ message }: IErrorMessageProps) => {
     
     return (
-        <div className={styles.error}>
+        <div role='alert' className={styles.error}>
             {message}
         </div>
     );

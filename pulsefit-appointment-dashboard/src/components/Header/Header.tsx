@@ -9,7 +9,7 @@ type IHeaderProps = {
 
 const Header = ({ logo, logoUrl, user }: IHeaderProps) => (
     <header className={styles.header}>
-        <div className={styles.logo}>
+        <div role='banner' className={styles.logo}>
             { logo && <a href={logoUrl}><img src={logo} alt='PulseFit Logo' /></a> }
         </div>
         <div className={styles.userDropdown}>

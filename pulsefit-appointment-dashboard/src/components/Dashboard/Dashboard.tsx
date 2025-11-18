@@ -19,18 +19,18 @@ const Dashboard = ({headerText, descriptionText, trainerData, submit}: IDashboar
     return (
         <form className={styles.dashboard}>
             <section className={styles.contentRow}>
-                <div className={styles.calendarSection}>
+                <section className={styles.calendarSection}>
                     <h1 className={styles.header}>{headerText}</h1>
                     <div className={styles.description}>{descriptionText}</div>
                     <Calendar selectedDate={selectedDate} onSelectedDate={setSelectedDate} />
-                </div>
-                <div className={styles.trainerSection}>
+                </section>
+                <section className={styles.trainerSection}>
                     {
                         trainerData.map((trainer: ITrainer) => (
                             <TrainerCard key={trainer.id} trainer={trainer} selectedSlot={selectedSlot} setSelectedSlot={setSelectedSlot}  />
                         ))
                     }
-                </div>
+                </section>
             </section>
             <section className={styles.footer}>
                 <Footer 

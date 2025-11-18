@@ -12,7 +12,7 @@ const Calendar = ({ selectedDate, onSelectedDate }: ICalendarProps) => {
     const [month, setMonth] = useState(new Date());
 
     return (
-        <div className={styles.calendarWrapper}>
+        <div role="grid" className={styles.calendarWrapper}>
             <DayPicker
                 mode="single"
                 month={month}
