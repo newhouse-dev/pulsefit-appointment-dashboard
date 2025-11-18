@@ -25,7 +25,7 @@ const Footer = ({ contactLinkLabel, contactLinkUrl, contactText, submitBtnLabel,
                     <a href={contactLinkUrl}>{contactLinkLabel}</a>
                 </span>
             </div>
-            <div className={styles.submitBtn} onClick={() => onSubmit()}>
+            <div className='btn primary' onClick={() => onSubmit()}>
                 {submitBtnLabel}
             </div>
         </div>

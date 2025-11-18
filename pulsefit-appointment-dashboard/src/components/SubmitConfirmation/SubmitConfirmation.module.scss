@@ -30,4 +30,11 @@
             padding: 20px;
         }
     }
+
+    .navigation {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
 }

@@ -5,6 +5,8 @@
     flex-direction: column;
     gap: 24px;
     min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
 
     .contentRow {
         display: flex;
@@ -13,6 +15,11 @@
         
         .calendarSection {
             margin-bottom: 16px;
+            width: 100%;
+
+            @media (min-width: $breakpoint-md) {
+                width: 350px;
+            }
 
             .header {
                 color: $color-main;
