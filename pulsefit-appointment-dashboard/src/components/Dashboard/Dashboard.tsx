@@ -17,8 +17,8 @@ const Dashboard = ({headerText, descriptionText, trainerData, submit}: IDashboar
     const [selectedSlot, setSelectedSlot] = useState<string>("");
 
     return (
-        <div className={styles.dashboard}>
-            <div className={styles.contentRow}>
+        <form className={styles.dashboard}>
+            <section className={styles.contentRow}>
                 <div className={styles.calendarSection}>
                     <h1 className={styles.header}>{headerText}</h1>
                     <div className={styles.description}>{descriptionText}</div>
@@ -31,8 +31,8 @@ const Dashboard = ({headerText, descriptionText, trainerData, submit}: IDashboar
                         ))
                     }
                 </div>
-            </div>
-            <div className={styles.footer}>
+            </section>
+            <section className={styles.footer}>
                 <Footer 
                     contactLinkLabel='Contact us' 
                     contactLinkUrl='#' 
@@ -40,8 +40,8 @@ const Dashboard = ({headerText, descriptionText, trainerData, submit}: IDashboar
                     submitBtnLabel='Book this visit' 
                     onSubmit={() => submit(selectedSlot, selectedDate)} 
                 />
-            </div>
-        </div>
+            </section>
+        </form>
     );
 }
 

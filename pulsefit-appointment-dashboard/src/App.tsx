@@ -72,7 +72,7 @@ function App() {
   }
 
   return (
-    <div className={styles.app}>
+    <main className={styles.app}>
       <Header logo={PulseFitLogo} user='Kevin' logoUrl='/' />
       {error && <ErrorMessage message={error} /> }
       { submittedTrainer && submittedSlot
@@ -90,7 +90,7 @@ function App() {
           submit={submit}
         />
       }
-    </div>
+    </main>
   )
 }
 
