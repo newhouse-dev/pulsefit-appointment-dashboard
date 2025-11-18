@@ -1,11 +1,14 @@
 import type { ITrainer } from './MockTypes';
+import JulieImg from '../assets/trainers/julie.jpg';
+import AnthonyImg from '../assets/trainers/anthony.jpg';
+import MichaelImg from '../assets/trainers/michael.jpg';
 
 export const MockTrainers: ITrainer[] = [
     {
         id: '8',
         name: 'Julie Ertz',
         title: 'Personal Trainer - Strength & Conditioning',
-        image: 'src/assets/trainers/julie.jpg',
+        image: JulieImg,
         availability:[
                 // Assumption: backend will only give us time slots for a single day as they are selected.
                 // That way, the frontend does not need to do manual filtering when a user selects a new date.
@@ -29,7 +32,7 @@ export const MockTrainers: ITrainer[] = [
         id: '44',
         name: 'Anthony Rizzo',
         title: 'Personal Trainer - Weight Loss & Wellness',
-        image: 'src/assets/trainers/anthony.jpg',
+        image: AnthonyImg,
         availability:[
                 { id: "44-2025-11-07-1200", time: "12:00 PM", isAvailable: true },
                 { id: "44-2025-11-07-1300", time: "1:00 PM", isAvailable: true },
@@ -43,7 +46,7 @@ export const MockTrainers: ITrainer[] = [
         id: '23',
         name: 'Michael Jordan',
         title: 'Personal Trainer - Functional Fitness & Mobility',
-        image: 'src/assets/trainers/michael.jpg',
+        image: MichaelImg,
         availability:[
                 { id: "23-2025-11-07-1200", time: "12:00 PM", isAvailable: true },
                 { id: "23-2025-11-07-1300", time: "1:00 PM", isAvailable: true },
