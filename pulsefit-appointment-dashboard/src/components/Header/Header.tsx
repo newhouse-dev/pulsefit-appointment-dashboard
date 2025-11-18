@@ -8,8 +8,8 @@ type IHeaderProps = {
 }
 
 const Header = ({ logo, logoUrl, user }: IHeaderProps) => (
-    <div className={styles.header}>
-        <div className={styles.logo}>
+    <header className={styles.header}>
+        <div role='banner' className={styles.logo}>
             { logo && <a href={logoUrl}><img src={logo} alt='PulseFit Logo' /></a> }
         </div>
         <div className={styles.userDropdown}>
@@ -17,7 +17,7 @@ const Header = ({ logo, logoUrl, user }: IHeaderProps) => (
             <div className={styles.userDisplayName}>{user}</div>
             <CaretDownFilled className={styles.dropdownIcon} /> {/* Assumed out of scope */}
         </div>
-    </div>
+    </header>
 );
 
 export default Header;

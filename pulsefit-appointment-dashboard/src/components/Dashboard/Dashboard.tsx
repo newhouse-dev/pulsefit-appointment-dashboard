@@ -17,22 +17,22 @@ const Dashboard = ({headerText, descriptionText, trainerData, submit}: IDashboar
     const [selectedSlot, setSelectedSlot] = useState<string>("");
 
     return (
-        <div className={styles.dashboard}>
-            <div className={styles.contentRow}>
-                <div className={styles.calendarSection}>
+        <form className={styles.dashboard}>
+            <section className={styles.contentRow}>
+                <section className={styles.calendarSection}>
                     <h1 className={styles.header}>{headerText}</h1>
                     <div className={styles.description}>{descriptionText}</div>
                     <Calendar selectedDate={selectedDate} onSelectedDate={setSelectedDate} />
-                </div>
-                <div className={styles.trainerSection}>
+                </section>
+                <section className={styles.trainerSection}>
                     {
                         trainerData.map((trainer: ITrainer) => (
                             <TrainerCard key={trainer.id} trainer={trainer} selectedSlot={selectedSlot} setSelectedSlot={setSelectedSlot}  />
                         ))
                     }
-                </div>
-            </div>
-            <div className={styles.footer}>
+                </section>
+            </section>
+            <section className={styles.footer}>
                 <Footer 
                     contactLinkLabel='Contact us' 
                     contactLinkUrl='#' 
@@ -40,8 +40,8 @@ const Dashboard = ({headerText, descriptionText, trainerData, submit}: IDashboar
                     submitBtnLabel='Book this visit' 
                     onSubmit={() => submit(selectedSlot, selectedDate)} 
                 />
-            </div>
-        </div>
+            </section>
+        </form>
     );
 }
 

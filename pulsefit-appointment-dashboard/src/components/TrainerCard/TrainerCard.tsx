@@ -9,13 +9,13 @@ type ITrainerCardProps = {
 }
 
 const TrainerCard = ({ trainer, selectedSlot: selected, setSelectedSlot }: ITrainerCardProps) => (
-    <div className={styles.trainerCard}>
+    <section aria-labelledby={`trainer-${trainer.id}-${trainer.name}`} className={styles.trainerCard}>
         <div className={styles.trainerInfo}>
             <div className={styles.photo}>
-                <img src={trainer.image} alt={`Photo of ${trainer.name}`} />
+                <img src={trainer.image} alt={`Photo of ${trainer.name}, ${trainer.title}`} />
             </div>
             <div className={styles.trainerNameTitle}>
-                <div className={styles.name}>{trainer.name}</div>
+                <div id={`trainer-${trainer.id}-${trainer.name}`} className={styles.name}>{trainer.name}</div>
                 <div className={styles.title}>{trainer.title}</div>
             </div>
         </div>
@@ -24,7 +24,7 @@ const TrainerCard = ({ trainer, selectedSlot: selected, setSelectedSlot }: ITrai
                 <TimeSlot slot={slot} isSelected={selected === slot.id} onSelect={setSelectedSlot} />
             ))}
         </div>
-    </div>
+    </section>
 );
 
 export default TrainerCard;

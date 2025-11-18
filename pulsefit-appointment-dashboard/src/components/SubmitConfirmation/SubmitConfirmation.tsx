@@ -23,7 +23,7 @@ const formatDate = (date: Date) => {
 const SubmitConfirmation = ({ text, trainer, slot, selectedDate, onClose }: ISubmitConfirmationProps) => {
     
     return (
-        <div className={styles.submitConfirmation}>
+        <div role="status" aria-live="polite" className={styles.submitConfirmation}>
             <CheckmarkCircleFilled className={styles.checkmark} />
             <h1>{text}</h1>
             {/* The below component is very similar to TrainerCard, but different enough to warrant rendering separately. 
