@@ -1,38 +1,54 @@
 @use '../../styles/variables.scss' as *;
 
-.header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.headerContainer {
     border-bottom: 1px solid gray;
 
-    .logo {
-        img {
-            max-width: 150px;
-            max-height: 100px;
-
-            @media (min-width: $breakpoint-md) {
-                max-width: 250px;
+    .header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        .logo {
+            img {
+                max-width: 150px;
+                max-height: 100px;
+    
+                @media (min-width: $breakpoint-md) {
+                    max-width: 250px;
+                }
             }
         }
-    }
-    .userDropdown {
-        display: inline-flex;
-        flex-direction: row;
-        
-        .userIcon {
+        .userDropdown {
+            display: inline-flex;
+            flex-direction: row;
+            margin-right: 25px;
 
-        }
-
-        .userDisplayName {
-            padding: 0 10px;
-        }
-
-        .dropdownIcon {
             &:hover{
                 cursor: pointer;
             }
+            
+            .userIcon {
+                font-size: 22px;
+            }
+    
+            .userDisplayName {
+                padding: 0 10px;
+            }
+        }
+    }
+    
+    .dropdownPanel {
+        box-sizing: border-box;
+        padding: 10px;
+        margin: 10px;
+        height: 150px;
+        border-radius: 16px;
+        border: 1px solid $color-border;
+
+        @media (min-width: $breakpoint-md) {
+            max-width: 600px;
+            margin-left: auto;
         }
     }
 }

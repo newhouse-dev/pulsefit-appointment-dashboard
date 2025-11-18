@@ -1,26 +1,24 @@
 import { useState } from 'react'
-import { produce } from 'immer';
 
 import styles from './App.module.scss';
 import PulseFitLogo from './assets/PulseFitLogo.png';
 import Header from './components/Header'
 import Dashboard from './components/Dashboard';
 import { MockTrainers } from './data/MockTrainers';
-import type { ITimeSlot, ITrainer } from './data/MockTypes';
+import type { IBookingData, ITrainer } from './data/MockTypes';
 import ErrorMessage from './components/ErrorMessage';
 import SubmitConfirmation from './components/SubmitConfirmation';
 
 
 function App() {
   const [error, setError] = useState<string | null>(null);
-  const [submittedSlot, setSubmittedSlot] = useState<ITimeSlot | null>(null);
-  const [submittedTrainer, setSubmittedTrainer] = useState<ITrainer | null>(null);
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const [bookedData, setBookedData] = useState<IBookingData[]>([]);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const [trainerData, setTrainerData] = useState<ITrainer[]>(MockTrainers);
 
   const errorMsg = 'An error has occurred.  Please contact us by the link below to book an appointment.';
 
-  const submit = (selectedSlotId: string, selectedDate: Date): void => {
+  const updateBooking = (selectedSlotId: string, shouldRemove?: boolean): void => {
     // Assumption: Trainer ID is always prepended to the Slot ID and is case sensitive.
 
     // Ideally this would is where we could call an API to handle this process for us and then refresh data.
@@ -57,38 +55,55 @@ function App() {
     }
     const selectedSlot = selectedTrainer.availability[selectedSlotIdx];
 
-    setTrainerData(prev => 
-      produce(prev, draft => {
-        // Normally a mutation like this is not reflected in state, but immer produce makes this possible so it works.
-        // https://immerjs.github.io/immer/produce/
-        draft[selectedTrainerIdx].availability[selectedSlotIdx].isAvailable = false;
+    // React state cannot be mutated in place, so we need to rebuild the tree with the updated values
+    setTrainerData(prev => [
+      ...prev.map(trainer => {
+        if (trainer.id === trainerId) {
+          return {
+            ...trainer,
+            availability: trainer.availability.map(slot => {
+              if (slot.id === selectedSlotId) {
+                return { ...slot, isAvailable: !!shouldRemove };
+              }
+              return slot;
+            })
+          };
+        }
+        return trainer;
       })
-    );
+    ]);
 
-    // Update was successful, display the confirmation page
-    setSubmittedTrainer({ ...selectedTrainer });
-    setSubmittedSlot({ ...selectedSlot });
-    setSelectedDate(selectedDate);
+    
+    if (shouldRemove) {
+      // Also remove it from the booked data list
+      setBookedData(prev => prev.filter(booking => booking.slot.id !== selectedSlotId));
+    } else {
+      // Add it to the booked data list
+      setBookedData(prev => [...prev, {
+        trainer: selectedTrainer,
+        slot: selectedSlot
+      }]);
+      // Display the confirmation page
+      setShowConfirmation(true);
+    }
   }
 
   return (
     <>
-      <Header logo={PulseFitLogo} user='Kevin' logoUrl='/' />
+      <Header logo={PulseFitLogo} user='Kevin' logoUrl='/' bookedData={bookedData} removeBooking={(slotId) => updateBooking(slotId, true)} />
       <main className={styles.app}>
         {error && <ErrorMessage message={error} /> }
-        { submittedTrainer && submittedSlot
+        { showConfirmation
           ? <SubmitConfirmation
               text='Your visit is booked.'
-              onClose={() => { setSubmittedTrainer(null); setSubmittedSlot(null); }} 
-              slot={submittedSlot}
-              trainer={submittedTrainer}
-              selectedDate={selectedDate}
+              bookedData={bookedData[bookedData.length - 1]}
+              onClose={() => { setShowConfirmation(false); }} 
           />
           : <Dashboard 
             trainerData={trainerData} 
             headerText='Book a visit' 
             descriptionText='Choose a date to see available times.'
-            submit={submit}
+            submit={updateBooking}
           />
         }
       </main>

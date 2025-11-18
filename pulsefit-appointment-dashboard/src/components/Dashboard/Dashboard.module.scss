@@ -33,6 +33,25 @@
         .trainerSection {
             flex: 1;
             overflow-y: auto;
+
+            .filterRow {
+                overflow: visible;
+                width: 100%;
+                margin: 16px 0;
+                display: flex;
+                justify-content: center;
+                background-color: $color-white;
+                border-radius: 16px;
+                border: 1px solid $color-border;
+
+                .searchBox {
+                    flex: 1;
+
+                    svg {
+                        margin: 15px;
+                    }
+                }
+            }
         }
     }
 
