@@ -1,0 +1,48 @@
+import { useState } from 'react';
+import type { ITrainer } from '../../data/MockTypes';
+import Calendar from '../Calendar';
+import styles from './Dashboard.module.scss';
+import TrainerCard from '../TrainerCard';
+import Footer from '../Footer';
+
+type IDashboardProps = {
+    headerText: string;
+    descriptionText: string;
+    trainerData: ITrainer[];
+    submit: (selectedSlot: string, selectedDate: Date) => void;
+}
+
+const Dashboard = ({headerText, descriptionText, trainerData, submit}: IDashboardProps) => {
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedSlot, setSelectedSlot] = useState<string>("");
+
+    return (
+        <div className={styles.dashboard}>
+            <div className={styles.contentRow}>
+                <div className={styles.calendarSection}>
+                    <h1 className={styles.header}>{headerText}</h1>
+                    <div className={styles.description}>{descriptionText}</div>
+                    <Calendar selectedDate={selectedDate} onSelectedDate={setSelectedDate} />
+                </div>
+                <div className={styles.trainerSection}>
+                    {
+                        trainerData.map((trainer: ITrainer) => (
+                            <TrainerCard key={trainer.id} trainer={trainer} selectedSlot={selectedSlot} setSelectedSlot={setSelectedSlot}  />
+                        ))
+                    }
+                </div>
+            </div>
+            <div className={styles.footer}>
+                <Footer 
+                    contactLinkLabel='Contact us' 
+                    contactLinkUrl='#' 
+                    contactText='Need help scheduling?' 
+                    submitBtnLabel='Book this visit' 
+                    onSubmit={() => submit(selectedSlot, selectedDate)} 
+                />
+            </div>
+        </div>
+    );
+}
+
+export default Dashboard;

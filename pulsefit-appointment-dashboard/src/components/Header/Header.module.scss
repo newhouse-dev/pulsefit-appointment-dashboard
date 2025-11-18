@@ -1,0 +1,38 @@
+@use '../../styles/variables.scss' as *;
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+
+    .logo {
+        img {
+            max-width: 150px;
+            max-height: 100px;
+
+            @media (min-width: $breakpoint-md) {
+                max-width: 250px;
+            }
+        }
+    }
+    .userDropdown {
+        display: inline-flex;
+        flex-direction: row;
+        
+        .userIcon {
+
+        }
+
+        .userDisplayName {
+            padding: 0 10px;
+        }
+
+        .dropdownIcon {
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}

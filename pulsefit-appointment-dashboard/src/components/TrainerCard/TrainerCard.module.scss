@@ -1,0 +1,39 @@
+@use "../../styles/variables.scss" as *;
+
+.trainerCard {
+  width: 100%;
+  background: $color-white;
+  border: 1px solid $color-border;
+  border-radius: 16px;
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 16px 20px 20px;
+    margin-bottom: 20px;
+    border-radius: 18px;
+  }
+}
+
+.trainerInfo {
+    column-gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: row;
+    
+    .photo img {
+        width: 72px;
+        object-fit: cover;
+    }
+    
+    .name {
+        font-weight: $font-weight-bold;
+        color: $color-main;
+    }
+}
+
+

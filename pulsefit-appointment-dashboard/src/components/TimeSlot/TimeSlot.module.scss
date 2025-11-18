@@ -1,0 +1,34 @@
+@use '../../styles/variables.scss' as *;
+
+.timeSlot {
+    background-color: $color-white;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    padding: 3px 5px;
+    color: $color-main;
+    margin: 8px;
+    font-weight: $font-weight-bold;
+
+    @media(min-width: $breakpoint-md) {
+        width: 120px;
+        display: inline-flex;
+        justify-content: center;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.selected {
+        color: $color-white;
+        background-color: $color-main;
+    }
+
+    &.disabled {
+        color: $color-border;
+
+        &:hover {
+            cursor: default;
+        }
+    }
+}
