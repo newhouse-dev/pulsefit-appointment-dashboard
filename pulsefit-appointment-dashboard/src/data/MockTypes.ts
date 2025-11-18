@@ -1,6 +1,7 @@
 export type ITimeSlot = {
     id: string;
     time: string;
+    date: Date;
     isAvailable: boolean;
 }
 
@@ -15,5 +16,4 @@ export type ITrainer = {
 export type IBookingData = {
     trainer: ITrainer
     slot: ITimeSlot;
-    date: Date;
 }

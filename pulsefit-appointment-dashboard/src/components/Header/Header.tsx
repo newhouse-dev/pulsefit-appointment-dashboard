@@ -9,9 +9,10 @@ type IHeaderProps = {
     logoUrl?: string;
     user: string;
     bookedData: IBookingData[] | null;
+    removeBooking: (slotId: string) => void;
 }
 
-const Header = ({ logo, logoUrl, user, bookedData }: IHeaderProps) => {
+const Header = ({ logo, logoUrl, user, bookedData, removeBooking }: IHeaderProps) => {
     const [openBooked, setOpenBooked] = useState(false);
 
     return (
@@ -31,7 +32,7 @@ const Header = ({ logo, logoUrl, user, bookedData }: IHeaderProps) => {
             </div>
             { openBooked && 
                 <div className={styles.dropdownPanel} role="menu">
-                    <BookedMenu bookedData={bookedData} />
+                    <BookedMenu bookedData={bookedData} removeBooking={removeBooking} />
                 </div>
             } 
         </header>);

@@ -37,7 +37,7 @@ const SubmitConfirmation = ({ text, bookedData, onClose }: ISubmitConfirmationPr
                     <div className={styles.details}>
                         <div className={styles.detailRow}>
                             <span className={styles.detailLabel}>Date: </span>
-                            <span className={styles.detailValue}>{formatDate(bookedData.date)}</span>
+                            <span className={styles.detailValue}>{formatDate(bookedData.slot.date)}</span>
                         </div>
 
                         <div className={styles.detailRow}>
@@ -54,7 +54,9 @@ const SubmitConfirmation = ({ text, bookedData, onClose }: ISubmitConfirmationPr
             </div>
             <div className={styles.navigation}>
                 <div className='btn primary' onClick={() => onClose()}>Back to Dashboard</div>
-                <div className='btn secondary'>Add to Calendar</div> {/* Does nothing - assumed out of scope for this demo */}
+                <div className='btn secondary'>Add to Calendar</div> {/* Does nothing - assumed out of scope for this demo. */}
+                {/* Ideas for implementation include dynamically generating an ICS to download or connecting to a cloud calendar 
+                    (Google, Apple, O365, etc) and adding via API. */}
             </div>
         </div>
     );

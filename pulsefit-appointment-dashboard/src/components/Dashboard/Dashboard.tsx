@@ -10,7 +10,7 @@ type IDashboardProps = {
     headerText: string;
     descriptionText: string;
     trainerData: ITrainer[];
-    submit: (selectedSlot: string, selectedDate: Date) => void;
+    submit: (selectedSlot: string) => void;
 }
 
 const Dashboard = ({headerText, descriptionText, trainerData, submit}: IDashboardProps) => {
@@ -32,7 +32,7 @@ const Dashboard = ({headerText, descriptionText, trainerData, submit}: IDashboar
         if (selectedSlot && !filteredTrainers.find(trainer => trainer.id === selectedSlot.split('-')[0])) {
             setSelectedSlot("");
         }
-    }, [searchText]);
+    }, [searchText, trainerData]);
 
     return (
         <form className={styles.dashboard}>
@@ -65,7 +65,7 @@ const Dashboard = ({headerText, descriptionText, trainerData, submit}: IDashboar
                     contactText='Need help scheduling?' 
                     submitBtnLabel='Book this visit' 
                     isSubmitBtnDisabled={!selectedSlot}
-                    onSubmit={() => { setSearchText(""); submit(selectedSlot, selectedDate); } }
+                    onSubmit={() => { setSearchText(''); submit(selectedSlot); } }
                 />
             </section>
         </form>

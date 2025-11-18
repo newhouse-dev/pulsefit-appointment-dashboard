@@ -1,7 +1,23 @@
 @use '../../styles/variables.scss' as *;
 
 .bookedMenu {
+    h2 {
+        margin-top: 0;
+        color: $color-main;
+        text-align: center;
+    }
+
     .noBookings {
-        
+        text-align: center;
+    }
+
+    .bookedItem {
+        .removeIcon {
+            margin: 0 8px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
 }

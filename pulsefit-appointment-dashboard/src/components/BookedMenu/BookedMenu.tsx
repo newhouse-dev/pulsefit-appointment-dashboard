@@ -4,6 +4,7 @@ import styles from './BookedMenu.module.scss';
 
 type IBookedMenuProps = {
     bookedData: IBookingData[] | null;
+    removeBooking: (slotId: string) => void;
 }
 
 // TODO: Move this to a reusable module
@@ -15,17 +16,18 @@ const formatDate = (date: Date) => {
     }).format(date);
 }
 
-const BookedMenu = ({ bookedData }: IBookedMenuProps) => {
+const BookedMenu = ({ bookedData, removeBooking }: IBookedMenuProps) => {
 
     return (
         <section className={styles.bookedMenu}>
             <h2>Your Booked Appointments</h2>
-            { !bookedData && <div className={styles.noBookings}>No bookings selected.</div> }
-            { bookedData &&
+            { !bookedData?.length && <div className={styles.noBookings}>You currently do not have any bookings.  Please book an appointment below.</div> }
+            { !!bookedData?.length &&
                 bookedData.map((item) => (
                     <div className={styles.bookedItem}>
-                        <DismissCircleFilled role='button' className={styles.removeIcon} />
-                        50 min Zoom Visit with {item.trainer.name} at {item.slot.time} on {formatDate(item.date)}
+                        {/* Ideally this should also include a confirmation dialog before removing the data, not implemented for simplicity */}
+                        <DismissCircleFilled role='button' className={styles.removeIcon} onClick={() => removeBooking(item.slot.id)} />
+                        50 min Zoom Visit with {item.trainer.name} at {item.slot.time} on {formatDate(item.slot.date)}
                     </div>
                 ))
             }
