@@ -11,11 +11,12 @@ type ISubmitConfirmationProps = {
 // TODO: Move this to a reusable module
 const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat("en-US", {
+        weekday: "short",
         month: "short",
         day: "numeric",
         year: "numeric",
     }).format(date);
-}
+};
 
 
 const SubmitConfirmation = ({ text, bookedData, onClose }: ISubmitConfirmationProps) => {
@@ -32,21 +33,18 @@ const SubmitConfirmation = ({ text, bookedData, onClose }: ISubmitConfirmationPr
                     <div className={styles.photo}>
                         <img src={bookedData.trainer.image} alt={`Photo of ${bookedData.trainer.name}`} />
                     </div>
-                    <div className={styles.name}>{bookedData.trainer.name}</div>
-                    <div className={styles.title}>{bookedData.trainer.title}</div>
                     <div className={styles.details}>
+                        <div className={styles.name}>{bookedData.trainer.name}</div>
+                        <div className={styles.title}>{bookedData.trainer.title}</div>
                         <div className={styles.detailRow}>
-                            <span className={styles.detailLabel}>Date: </span>
                             <span className={styles.detailValue}>{formatDate(bookedData.slot.date)}</span>
                         </div>
 
                         <div className={styles.detailRow}>
-                            <span className={styles.detailLabel}>Time: </span>
                             <span className={styles.detailValue}>{bookedData.slot.time} (PT)</span> {/* Timezones assumed out of scope for this demo */}
                         </div>
 
                         <div className={styles.detailRow}>
-                            <span className={styles.detailLabel}>Duration: </span>
                             <span className={styles.detailValue}>50 min Zoom Visit</span> {/* Assumed out of scope for this demo */}
                         </div>
                     </div>
