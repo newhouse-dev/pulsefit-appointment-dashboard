@@ -5,7 +5,7 @@
 https://symphonious-lebkuchen-8822cd.netlify.app/
 
 ## How to Run Locally
-The solution can be run locally by running the command `npm start dev` inside the pulsefit-appointment-dashboard folder.
+The solution can be run locally by running the command `npm run dev` inside the pulsefit-appointment-dashboard folder.
 
 ## Requirements
 - Frontend UI for a dashboard where a user can view and book appointments with a personal trainer.
