@@ -1,4 +1,4 @@
-# pulsefit-appointment-dashboard
+# PulseFit Appointment Dashboard Demo
 "PulseFit" Appointment Booking Dashboard (exercise for First Stop Health interview)
 
 ## Live Production URL
