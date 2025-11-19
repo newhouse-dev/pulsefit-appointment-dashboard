@@ -4,6 +4,9 @@
 ## Live Production URL
 https://symphonious-lebkuchen-8822cd.netlify.app/
 
+## How to Run Locally
+The solution can be run locally by running the command `npm start dev` inside the pulsefit-appointment-dashboard folder.
+
 ## Requirements
 - Frontend UI for a dashboard where a user can view and book appointments with a personal trainer.
 
@@ -60,10 +63,11 @@ link in the README.
 - Data does not need to persist through page reloads.
 - Because this is a front-end evaluation, a backend implementation is out of scope.
 - Authentication is also out of scope.
-- User profile is out of scope.
+- Full user profile is out of scope.
 - To be completed within a 3-4 hour timeframe.
 - Functionality bears more weight for this demo than pixel-perfect design implementation.
 - Trainer and schedule data can be configured in a project JSON file for this demo.
+- Scheduling data for only a single day is necessary.
 - Real-time availability would be determined by the backend and is out of scope.
 
 ## Known Bugs
@@ -72,3 +76,5 @@ link in the README.
 - Hamburger menu on mobile
 - Calendar styling
 - Availability does not change when date is changed
+- Favicon is still the default
+- General styling cleanup to match design
